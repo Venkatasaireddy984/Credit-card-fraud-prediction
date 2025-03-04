@@ -113,14 +113,76 @@ interface = gr.Interface(
 )
 interface.launch()
 ```
+# Credit Card Fraud Detection
 
-## Technologies Use
+This project focuses on detecting fraudulent credit card transactions using a highly imbalanced dataset, with only 0.17% of the transactions labeled as fraudulent. It utilizes a variety of preprocessing techniques and machine learning models to maximize detection accuracy while minimizing false positives.
+
+## Dataset
+- The dataset contains 284,807 transactions with 30 anonymized features (`V1` to `V28`), along with `Time`, `Amount`, and a binary `Class` label indicating fraud (1) or legitimate (0).
+- Available on Kaggle: [Credit Card Fraud Detection Dataset](https://www.kaggle.com/).
+
+## Key Steps
+1. **Data Preprocessing**:
+   - Scaled the `Time` and `Amount` columns using `RobustScaler`.
+   - Handled class imbalance through undersampling and oversampling techniques (SMOTE).
+   - Removed duplicates and checked for missing values.
+
+2. **Exploratory Data Analysis**:
+   - Visualized transaction distributions and class imbalance.
+   - Analyzed correlations between features using heatmaps.
+
+3. **Modeling**:
+   - Tested multiple machine learning algorithms:
+     - Logistic Regression
+     - Random Forest Classifier
+     - Decision Tree Classifier
+     - XGBoost Classifier
+   - Evaluated models using metrics like precision, recall, F1-score, and accuracy.
+
+4. **Results**:
+   - Achieved over 99% accuracy using Random Forest and XGBoost on oversampled data.
+   - Balanced precision and recall to minimize false positives.
+
+## Code Example
+### Data Loading and Exploration
+```python
+import pandas as pd
+
+data = pd.read_csv('/kaggle/input/creditcardfraud/creditcard.csv')
+print(data.head())
+```
+
+### Model Evaluation
+```python
+from sklearn.metrics import classification_report
+
+for name, clf in classifiers.items():
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    print(f"{name}:\n{classification_report(y_test, y_pred)}")
+```
+
+## Deployment
+- Saved the final model as a `.pkl` file using `joblib` for deployment.
+- Example usage:
+  ```python
+  import joblib
+
+  model = joblib.load('Credit_card_model.pkl')
+  pred = model.predict(new_data_point)
+  print("Fraud" if pred[0] == 1 else "No Fraud")
+  ```
+### Make predictions via the API:
+```bash
+Running on local URL:  http://127.0.0.1:7860
+```
+
+## Technologies Used
 - Python
 - Pandas, NumPy
 - Scikit-learn
 - XGBoost
 - Seaborn, Matplotlib
-- Joblib,Gradio-Interface
 
 ## Results Visualization
 ![Class Distribution](path/to/class-distribution-plot.png)
