@@ -75,33 +75,34 @@ for name, clf in classifiers.items():
 
     import gradio as gr
 
-df = pd.read_csv('creditcard.csv')
-df.isnull().sum()
-df=df.dropna()
-df = df.drop_duplicates()
-X = df.drop(['Class'], axis=1)
-y = df['Class']
-scaler = StandardScaler()
-df[['Time', 'Amount']] = scaler.fit_transform(df[['Time', 'Amount']])
-smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X, y)
-X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
-model = DecisionTreeClassifier(random_state=42)
-model.fit(X_train, y_train)
-joblib.dump(model, 'decision_tree_model.pkl')
-joblib.dump(scaler, 'scaler.pkl')
-predictions = model.predict(X_test)
-print(classification_report(y_test, predictions))
-def predict_fraud(*features):
-    # Convert input to DataFrame
-    features = [float(x) for x in features]
-    features_df = pd.DataFrame([features], columns=X.columns)
-    features_df[['Time', 'Amount']] = scaler.transform(features_df[['Time', 'Amount']])
-    prediction = model.predict(features_df)
-    return 'Fraud' if prediction[0] == 1 else 'Not Fraud'
+   df = pd.read_csv('creditcard.csv')
+   df.isnull().sum()
+   df=df.dropna()
+   df = df.drop_duplicates()
+   X = df.drop(['Class'], axis=1)
+   y = df['Class']
+   scaler = StandardScaler()
+   df[['Time', 'Amount']] = scaler.fit_transform(df[['Time', 'Amount']])
+   smote = SMOTE(random_state=42)
+   X_resampled, y_resampled = smote.fit_resample(X, y)
+   X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
+   model = DecisionTreeClassifier(random_state=42)
+   model.fit(X_train, y_train)
+  joblib.dump(model, 'decision_tree_model.pkl')
+  joblib.dump(scaler, 'scaler.pkl')
+  predictions = model.predict(X_test)
+  print(classification_report(y_test, predictions))
+  def predict_fraud(*features):
+ ### Convert input to DataFrame
+   ```python
+ features = [float(x) for x in features]
+ features_df = pd.DataFrame([features], columns=X.columns)
+ features_df[['Time', 'Amount']] = scaler.transform(features_df[['Time', 'Amount']])
+ prediction = model.predict(features_df)
+ return 'Fraud' if prediction[0] == 1 else 'Not Fraud'
 feature_names = X.columns
 interface = gr.Interface(
-    fn=predict_fraud,
+  fn=predict_fraud,
     inputs=[gr.Number(label=name) for name in feature_names],
     outputs="text",
     title="Credit Card Fraud Detection",
