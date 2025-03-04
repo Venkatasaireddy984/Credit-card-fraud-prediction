@@ -63,17 +63,17 @@ for name, clf in classifiers.items():
     ```python
     import pandas as pd
     
-from sklearn.model_selection import train_test_split
+    from sklearn.model_selection import train_test_split
 
-from sklearn.preprocessing import StandardScaler
+    from sklearn.preprocessing import StandardScaler
 
-from sklearn.tree import DecisionTreeClassifier
+    from sklearn.tree import DecisionTreeClassifier
 
-from sklearn.metrics import classification_report
+    from sklearn.metrics import classification_report
 
-import joblib
+    import joblib
 
-import gradio as gr
+    import gradio as gr
 
 df = pd.read_csv('creditcard.csv')
 df.isnull().sum()
