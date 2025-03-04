@@ -120,6 +120,7 @@ interface.launch()
 - Scikit-learn
 - XGBoost
 - Seaborn, Matplotlib
+- Joblib,Gradio-Interface
 
 ## Results Visualization
 ![Class Distribution](path/to/class-distribution-plot.png)
