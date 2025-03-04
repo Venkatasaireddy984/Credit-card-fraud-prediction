@@ -74,7 +74,9 @@ for name, clf in classifiers.items():
     import joblib
 
     import gradio as gr
-
+    ```
+    
+ ```python
    df = pd.read_csv('creditcard.csv')
    df.isnull().sum()
    df=df.dropna()
