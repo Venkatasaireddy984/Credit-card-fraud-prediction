@@ -62,12 +62,19 @@ for name, clf in classifiers.items():
   - Made the model accessible as a web app using gradio for real-time fraud detection!
     ```python
     import pandas as pd
+    
 from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import StandardScaler
+
 from sklearn.tree import DecisionTreeClassifier
+
 from sklearn.metrics import classification_report
+
 import joblib
+
 import gradio as gr
+
 df = pd.read_csv('creditcard.csv')
 df.isnull().sum()
 df=df.dropna()
