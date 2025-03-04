@@ -68,42 +68,23 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
 import joblib
 import gradio as gr
-
-# Load dataset
 df = pd.read_csv('creditcard.csv')
-# Remove missing values in the Dataset
 df.isnull().sum()
 df=df.dropna()
-# Remove duplicate rows
 df = df.drop_duplicates()
-
-# Use all features except 'Class'
 X = df.drop(['Class'], axis=1)
 y = df['Class']
-
-# Scale 'Time' and 'Amount'
 scaler = StandardScaler()
 df[['Time', 'Amount']] = scaler.fit_transform(df[['Time', 'Amount']])
-# Balance classes using SMOTE
 smote = SMOTE(random_state=42)
 X_resampled, y_resampled = smote.fit_resample(X, y)
-
-# Split data
 X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
-
-# Train Decision Tree Classifier
 model = DecisionTreeClassifier(random_state=42)
 model.fit(X_train, y_train)
-
-# Save the model and scaler
 joblib.dump(model, 'decision_tree_model.pkl')
 joblib.dump(scaler, 'scaler.pkl')
-
-# Test model
 predictions = model.predict(X_test)
 print(classification_report(y_test, predictions))
-
-# Define prediction function for Gradio
 def predict_fraud(*features):
     # Convert input to DataFrame
     features = [float(x) for x in features]
@@ -111,8 +92,6 @@ def predict_fraud(*features):
     features_df[['Time', 'Amount']] = scaler.transform(features_df[['Time', 'Amount']])
     prediction = model.predict(features_df)
     return 'Fraud' if prediction[0] == 1 else 'Not Fraud'
-
-# Create Gradio Interface
 feature_names = X.columns
 interface = gr.Interface(
     fn=predict_fraud,
@@ -121,12 +100,10 @@ interface = gr.Interface(
     title="Credit Card Fraud Detection",
     description="Provide transaction features to predict if it's fraud or not."
 )
-```
-# Launch the app
 interface.launch()
+```
 
-
-## Technologies Used
+## Technologies Use
 - Python
 - Pandas, NumPy
 - Scikit-learn
