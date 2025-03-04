@@ -93,6 +93,7 @@ for name, clf in classifiers.items():
   predictions = model.predict(X_test)
   print(classification_report(y_test, predictions))
   def predict_fraud(*features):
+  ```
  ### Convert input to DataFrame
    ```python
  features = [float(x) for x in features]
