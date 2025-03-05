@@ -147,5 +147,5 @@ Running on local URL:  http://127.0.0.1:7860
 
 ## Author
 - **LinkedIn**: [VenkatasaireddyYerrappagari](linkedin.com/in/venkata-sai-reddy-yerrappagari-7304a32b7 )
-- **GitHub**: [VenkatasaireddyYerrappagari](https://github.com/Venkatasaireddy984/workco.git)
+- **GitHub**: [VenkatasaireddyYerrappagari](https://github.com/Venkatasaireddy984)
 - **Email**: venkatasaireddy.yerrappagari@gmail.com
