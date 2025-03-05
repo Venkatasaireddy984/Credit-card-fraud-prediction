@@ -58,6 +58,12 @@ for name, clf in classifiers.items():
   pred = model.predict(new_data_point)
   print("Fraud" if pred[0] == 1 else "No Fraud")
   ```
+  ### Install Packages
+  ```python
+  !pip install gradio
+  !pip install smote
+  ```
+  
   ### Gradio-interface
   - Made the model accessible as a web app using gradio for real-time fraud detection!
     ```python
@@ -70,8 +76,11 @@ for name, clf in classifiers.items():
     from sklearn.tree import DecisionTreeClassifier
 
     from sklearn.metrics import classification_report
+    
+    from imblearn.over_sampling import SMOTE
 
     import joblib
+    
 
     import gradio as gr
     ```
