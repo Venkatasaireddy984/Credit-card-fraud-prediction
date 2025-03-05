@@ -119,7 +119,7 @@ interface.launch()
 Running on local URL:  http://127.0.0.1:7860
 ```
 ### web app 
-https://github.com/Venkatasaireddy984/Credit-card-fraud-prediction/blob/0c90e1644d7ab49cffc979c6b470a8cc585ff172/Screenshot%202025-03-04%20175516.png
+![image alt](https://github.com/Venkatasaireddy984/Credit-card-fraud-prediction/blob/0c90e1644d7ab49cffc979c6b470a8cc585ff172/Screenshot%202025-03-04%20175516.png)
 
 ## Technologies Used
 - Python
