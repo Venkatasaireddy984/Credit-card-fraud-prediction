@@ -139,7 +139,7 @@ Running on local URL:  http://127.0.0.1:7860
 
 ## Results Visualization
 ![Class Distribution](path/to/class-distribution-plot.png)
-![Correlation Matrix](path/to/correlation-matrix.png)
+![Correlation Matrix](https://github.com/Venkatasaireddy984/Credit-card-fraud-prediction/blob/39fd23500f5f7240d48900b21df0ccd280994c8d/Screenshot%202025-03-04%20182642.png)
 
 ## Future Improvements
 - Explore deep learning models for enhanced fraud detection.
